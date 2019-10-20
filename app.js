@@ -6,7 +6,8 @@ const client = new discord.Client();
 const prefix = '/';
 
 client.on('ready', () => {
-  console.log('Login as ' + client.user.username + client.user.id);
+  {username, id} = client.user;
+  console.log(`login as ${username} (${id})`)
 });
 
 client.on('reconnecting', () => {

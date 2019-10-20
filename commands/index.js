@@ -1,15 +1,61 @@
 const command = require('./command');
+const online = require('./functions/online');
+const where = require('./functions/where');
+const uuid = require('./functions/uuid');
+const help = require('./functions/help');
+const randomPlayer = require('./functions/random-player');
 
 // Add new commands here
 let commands = [
-  new command('test', (message, args) => {
-    message.reply(args[1]);
-    console.log(args[0]);
+
+  // Ping the bot
+  new command('ping', (message, args) => {
+    message.channel.send('Psssss...');
+  }),
+
+  // Return a list of online players
+  new command('on', online),
+  
+  // If people try to off it
+  new command('off', (message, args) => {
+    message.reply('no, you.');
+  }),
+
+  // Display information about each role
+  new command('role', (message, args) => {
+    message.channel.send('```👻 Student\n🤖 Staff\n💩 Non-MMU\n👽 ET```');
+  }),
+  
+  // Return a random value in given range
+  new command('roll', (message, args) => {
+  	let value = Math.floor(Math.random() * (parseInt(args[0]) - 1));
+    message.channel.send(`I'll give you ${value} diamonds.`);
   })
-  .addParameter((param) => { return (param == 'Tajam'); })
-  .addParameter((param) => { return true; })
-  .addPermission('Kouhai')
-  .addHelp('Usage: [Tajam] [Anything]')
+    .param(argv => {
+      if (!Number.isInteger(argv)) return false;
+      if (!parseInt(argv) <= 0) return false;
+      return true;
+    })
+    .help('Params: [positive number (>0)]'),
+
+  // Return a random online player
+  new command('random-player', randomPlayer),
+  
+  // Display all the commands and usages
+  new command('help', help),
+
+  // PM the developer coordinate of the player
+  new command('where', where)
+    .perms('Dev')
+    .param(argv => { return true; })
+    .help('Params: [player name]'),
+
+  // Get the UUID of the player
+  new command('uuid', uuid)
+    .perms('Dev')
+    .param(argv => { return true; })
+    .help('Params: [player name]')
+
 ];
 
 module.exports.execute = (parsed, message) => {

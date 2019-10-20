@@ -4,17 +4,17 @@ var command = function Command(name, func) {
   this.roleNames = [];
   this.func = func;
 
-  this.addParameter = (filter) => {
+  this.param = (filter) => {
     this.paramFilter.push(filter);
     return this;
   }
 
-  this.addPermission = (roleName) => {
+  this.perms = (roleName) => {
     this.roleNames.push(roleName);
     return this;
   }
 
-  this.addHelp = (helpMessage) => {
+  this.help = (helpMessage) => {
     this.helpMessage = helpMessage;
     return this;
   }
