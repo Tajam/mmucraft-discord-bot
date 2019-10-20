@@ -1,3 +1,5 @@
+const md5 = require('md5');
+
 let constructUUID = (name) => {
   var hexString = md5('OfflinePlayer:' + name);
   var tokens = hexString.match(/[a-fA-F0-9][a-fA-F0-9]/gi);
