@@ -32,8 +32,8 @@ let commands = [
     message.channel.send(`I'll give you ${value} diamonds.`);
   })
     .param(argv => {
-      if (!Number.isInteger(argv)) return false;
-      if (!parseInt(argv) <= 0) return false;
+      if (!(/^\+?(0|[1-9]\d*)$/).test(argv)) {return false;}
+      if (parseInt(argv) <= 0) return false;
       return true;
     })
     .help('Params: [positive number (>0)]'),
@@ -67,7 +67,7 @@ module.exports.execute = (parsed, message) => {
       return;
     }
     if (code == 1) {
-      message.channel.send(cmd.helpMessage);
+      message.channel.send(`\`\`\`${cmd.helpMessage}\`\`\``);
       return;
     }
     if (code == 0) return;

@@ -8,7 +8,7 @@ database
   .spread((results, metadata) => {
     let response;
     if(results.length) {
-      {x, y, z, world} = results[0];
+      let {x, y, z, world} = results[0];
       response = `${args[0]} is at ${x}, ${y}, ${z} in ${world}`;
     }
     else

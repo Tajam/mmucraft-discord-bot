@@ -21,7 +21,7 @@ var command = function Command(name, func) {
 
   this.execute = (name, args, message) => {
     if (name != this.name) return 3;
-    let havePermission = false;
+    let havePermission = (this.roleNames.length == 0);
     let roles = message.member.roles.array();
     for (role of roles) {
       if (this.roleNames.includes(role.name)) {

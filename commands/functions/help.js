@@ -6,9 +6,6 @@ module.exports = (message, args) => {
     'role - Show the meaning of icon for online players.',
     'roll [number] - Return a random value in given range.',
     'random-player - Pick a random online player.',
-    'gunpowder - Contribute a gunpowder for Creeper bot.',
-    'tnt - Make a TNT for Creeper bot. Require 5 gunpowders.',
-    'detonate - Detonate the Creeper bot.',
     'help - Show this message.'
   ];
   let response = 'Available commands\`\`\`' + helpList.join('\n') + '\`\`\`';
