@@ -29,7 +29,7 @@ var command = function Command(name, func) {
       }
     }
     if (!havePermission) return 2;
-    if (this.paramFilter.length != args.length) return 1;
+    if (this.paramFilter.length > args.length) return 1;
     for (let i = 0; i < this.paramFilter.length; i++) {
       if (!this.paramFilter[i](args[i])) return 1;
     }
