@@ -1,14 +1,10 @@
-const database = require('../../database');
+const models = require('../../models');
 
 module.exports = (message, args) => {
-database
-  .query(
-    'SELECT x,y,z,world FROM users WHERE username = ?',
-    { raw: true, replacements: [args[0]] })
-  .spread((results, metadata) => {
+  models.users.findOne({ where: { realname: args[0] } }).then((user) => {
     let response;
-    if(results.length) {
-      let {x, y, z, world} = results[0];
+    if(user) {
+      let {x, y, z, world} = user;
       response = `${args[0]} is at ${x}, ${y}, ${z} in ${world}`;
     }
     else

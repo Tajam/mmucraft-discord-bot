@@ -4,6 +4,7 @@ const where = require('./functions/where');
 const uuid = require('./functions/uuid');
 const help = require('./functions/help');
 const randomPlayer = require('./functions/random-player');
+const announcement = require ('./functions/announcement');
 
 // Add new commands here
 let commands = [
@@ -54,7 +55,19 @@ let commands = [
   new command('uuid', uuid)
     .perms('Dev')
     .param(argv => { return true; })
-    .help('Params: [player name]')
+    .help('Params: [player name]'),
+
+  // Update the announcement from the database
+  new command('update', announcement.update)
+    .perms('Dev')
+    .param(argv => /^[0-9]*$/.test(argv))
+    .help('Params: [message id]'),
+
+  // Delete the announcement from the database
+  new command('delete', announcement.delete)
+    .perms('Dev')
+    .param(argv => /^[0-9]*$/.test(argv))
+    .help('Params: [message id]')
 
 ];
 

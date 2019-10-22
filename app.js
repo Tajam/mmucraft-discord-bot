@@ -2,7 +2,7 @@ const discord = require('discord.js');
 const parser  = require('discord-command-parser');
 const command = require('./commands');
 const client = new discord.Client();
-const annoucement = require('./annoucement');
+const announcement = require('./commands/functions/announcement');
 
 const prefix = '/';
 
@@ -10,7 +10,7 @@ client.on('ready', () => {
   let {username, id} = client.user;
   console.log(`login as ${username} (${id})`);
 
-  annoucement.init(client.channels);
+  announcement.init(client.channels);
 });
 
 client.on('reconnecting', () => {
@@ -18,8 +18,8 @@ client.on('reconnecting', () => {
 });
 
 client.on('message', (message) => {
-  if (message.channel.id == annoucement.id) {
-    annoucement.record(message);
+  if (message.channel.id == announcement.id) {
+    announcement.record(message);
     return;
   }
 
