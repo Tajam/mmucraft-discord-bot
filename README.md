@@ -1,6 +1,7 @@
 # Setup
 
 Make sure you have `npm` and `node.js` installed
+
 Version required for `node.js` is `10.0.0+`
 
 Run this
