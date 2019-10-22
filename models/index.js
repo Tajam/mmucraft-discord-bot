@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const definitions = require('./definitions');
 
 let loggingOption;
-if (process.env.SEQUELIZE_LOGGING) {
+if (process.env.SEQUELIZE_LOGGING == 'true') {
   loggingOption = console.log;
 } else {
   loggingOption = false;
