@@ -10,7 +10,7 @@ client.on('ready', () => {
   let {username, id} = client.user;
   console.log(`login as ${username} (${id})`);
 
-  announcement.init(client.channels);
+  announcement.init(client.channels.cache);
 });
 
 client.on('reconnecting', () => {
