@@ -20,13 +20,6 @@ const sequelize = new Sequelize(
   }
 );
 
-try {
-  await sequelize.authenticate();
-  console.log('Connection has been established successfully.');
-} catch (error) {
-  console.error('Unable to connect to the database:', error);
-}
-
 let models = definitions.export(sequelize);
 if (require.main === module)
   sequelize.sync();
