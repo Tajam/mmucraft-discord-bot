@@ -1,5 +1,0 @@
-require('dotenv').config();
-const bot = require('../app');
-
-// Start the bot
-bot.login(process.env.TOKEN);
